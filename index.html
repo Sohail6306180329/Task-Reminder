@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Reminder Web</title>
+    <link rel="icon" href="https://img.icons8.com/emoji/48/task-complete-emoji.png">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input[type="text"], input[type="datetime-local"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #4caf50;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h3 {
+            margin-top: 20px;
+            color: #222;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 6px 0;
+            font-size: 15px;
+        }
+
+        .task-name {
+            font-weight: bold;
+            color: #0077cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Task Reminder</h1>
+        <form action="/add" method="POST">
+            <input type="text" name="task" placeholder="Enter your task" required>
+            <input type="datetime-local" name="time" required>
+            <button type="submit">Add Task</button>
+        </form>
+
+        <h3>📋 Pending Tasks:</h3>
+        <ul>
+            {% for task in tasks %}
+            <li><span class="task-name">{{ task[0] }}</span> — {{ task[1] }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
